@@ -61,7 +61,6 @@ int deck::size() const
 
 void deck::shuffle()
 {
-   // copy nodes into a vector of card values
    std::vector<card> v;
    v.reserve(size());
 
@@ -72,7 +71,6 @@ void deck::shuffle()
       p = p->next;
    }
 
-   // Fisher-Yates shuffle
    for (int i = (int)v.size() - 1; i > 0; i--)
    {
       int j = rand() % (i + 1);
@@ -81,7 +79,6 @@ void deck::shuffle()
       v[j] = tmp;
    }
 
-   // write shuffled cards back into linked list
    p = front;
    int i = 0;
    while (p != nullptr)
