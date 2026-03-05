@@ -8,18 +8,21 @@
 class deck
 {
 public:
-   deck();
-   ~deck();
+    deck();
+    ~deck();
 
-   void shuffle();
-   int size() const;
+    void shuffle();
+    int size() const;
 
-   friend std::ostream &operator<<(std::ostream &out, const deck &d);
+    d_node* deal();
+    void replace(d_node* c);
+
+    friend std::ostream& operator<<(std::ostream &out, const deck &d);
 
 private:
-   d_node *front;
+    d_node *front;
 
-   void clear();
+    void clear();
 };
 
 #endif
