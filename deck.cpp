@@ -6,7 +6,6 @@
 deck::deck()
 {
    front = nullptr;
-
    d_node *tail = nullptr;
 
    // order: ace..king, club..diamond..heart..spade
@@ -71,6 +70,7 @@ void deck::shuffle()
       p = p->next;
    }
 
+   // Fisher-Yates shuffle
    for (int i = (int)v.size() - 1; i > 0; i--)
    {
       int j = rand() % (i + 1);
@@ -81,12 +81,43 @@ void deck::shuffle()
 
    p = front;
    int i = 0;
+
    while (p != nullptr)
    {
       p->data = v[i];
       i++;
       p = p->next;
    }
+}
+
+d_node* deck::deal()
+{
+   if (front == nullptr)
+      return nullptr;
+
+   d_node *temp = front;
+   front = front->next;
+   temp->next = nullptr;
+
+   return temp;
+}
+
+void deck::replace(d_node *c)
+{
+   if (front == nullptr)
+   {
+      front = c;
+      return;
+   }
+
+   d_node *p = front;
+
+   while (p->next != nullptr)
+   {
+      p = p->next;
+   }
+
+   p->next = c;
 }
 
 std::ostream &operator<<(std::ostream &out, const deck &d)
