@@ -1,6 +1,22 @@
 // ===== src/card.cpp =====
 #include "card.h"
 
+card::card(const card& c)
+{
+    value = c.value;
+    suit = c.suit;
+}
+
+card& card::operator=(const card& c)
+{
+    if(this != &c)
+    {
+        value = c.value;
+        suit = c.suit;
+    }
+    return *this;
+}
+
 card::card(int v, int s)
 {
    value = v;
