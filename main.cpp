@@ -4,10 +4,19 @@
 #include <ctime>
 #include "deck.h"
 
+void playFlip();
+
 int main()
 {
    srand((unsigned)time(0));
 
+   playFlip();
+
+   return 0;
+}
+
+void playFlip()
+{
    deck d;
 
    std::cout << "Deck before shuffle:" << std::endl;
@@ -20,7 +29,6 @@ int main()
    std::cout << "Deck after shuffle:" << std::endl;
    std::cout << d << std::endl;
 
-   // deal 24 cards into a new deck
    deck table;
 
    for (int i = 0; i < 24; i++)
@@ -34,6 +42,4 @@ int main()
 
    std::cout << "Remaining deck:" << std::endl;
    std::cout << d << std::endl;
-
-   return 0;
 }
